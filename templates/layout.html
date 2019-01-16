@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+	
+    <style>
+        #log:hover{
+            color: skyblue;
+        }
+        .new1{
+            text-decoration: none;
+            color: white;
+        }
+        .new1:hover{
+            text-decoration: none;
+            color: red;
+
+        }
+
+      </style>
+
+    <title>URL Shortner</title>
+  </head>
+  <body style="background-color: skyblue; color:blue ">
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">URL Shortner</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        {% block content %} {% endblock %}
+      </li>
+    </ul>
+    {% if session['username'] %}
+    <form class="form-inline my-2 my-lg-0">
+      <h5><span class="badge badge-light mr-sm-2" style="background-color: white;">Welcome @{{session['username']}}</span></h5>
+      <a href="/logout"  class="btn btn-outline-light my-2 my-sm-0" style="color: white"><i class="fa fa-sign-out" id="log" aria-hidden="true"></i></a> 
+    </form>
+    {% endif %}
+
+  </div>
+</nav>
+{% block body %} {% endblock %}
+   
+  </body>
+</html>
